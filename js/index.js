@@ -145,7 +145,7 @@ function displayAttackMessage(resultadoCombate) {
 
 function displayGameMsg(winner) {
     let seccionReiniciar = document.getElementById('reiniciar')
-    seccionReiniciar.style.display = 'block'
+    seccionReiniciar.style.display = 'flex'
 
     let seccionMensajes = document.getElementById('mensajes')
 

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+body {
+    font-family: 'Righteous', cursive;
+}
+
+.title {
+    padding: 20px;
+    font-size: 40px;
+}
+
+.subtitle {
+    padding: 20px;
+    font-size: 32px;
+}
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-tarjetas {
+    display: flex;
+    gap: 10px;
+}
+
+.tarjeta-de-mokepon {
+    width: 200px;
+    height: 100px;
+    background-color: azure;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta-de-mokepon img {
+    width: 80px;
+}
+
+input {
+    appearance: none;
+}
+
+#boton-mascota {
+    margin: 32px;
+    width: 200px;
+    height: 64px;
+    background-color: transparent;
+    font-family: 'Righteous', cursive;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+#seleccionar-ataque {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+    padding: 20px 80px;
+}
+
+.contenedor-ataques {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.contenedor-ataques button {
+    width: 120px;
+    height: 56px;
+    background-color: transparent;
+    font-family: 'Righteous', cursive;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
