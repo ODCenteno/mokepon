@@ -5,13 +5,17 @@ body {
 }
 
 .title {
-    padding: 20px;
-    font-size: 40px;
+    padding: 12px;
+    font-size: 60px;
+    margin: 8px;
 }
 
 .subtitle {
-    padding: 20px;
+    padding: 8px;
     font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #seleccionar-mascota {
@@ -29,13 +33,14 @@ body {
 .tarjeta-de-mokepon {
     width: 200px;
     height: 100px;
-    background-color: azure;
+    background-color: black;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: aliceblue;
 }
 
 .tarjeta-de-mokepon img {
@@ -58,11 +63,9 @@ input {
 }
 
 #seleccionar-ataque {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: blueviolet;
     padding: 20px 80px;
 }
 
@@ -70,17 +73,77 @@ input {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
 }
 
 .contenedor-ataques button {
+    font-family: 'Righteous', cursive;
     width: 120px;
     height: 56px;
-    background-color: transparent;
+    background-color: black;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    border-color: transparent;
+    box-shadow: 1px 4px 8px;
+}
+
+.contenedor-mensajes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0px;
+    background-color: whitesmoke;
+}
+.contenedor-mensajes > p {
+    margin-block: 0;
+    padding: 8px;
+    margin-top: 12px;
+    font-size: 24px;
+}
+.mensajes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+}
+
+.display-attacks {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+.display-attacks-message {
+    font-size: 18px;
+}
+.display-attacks-message p {
+    text-align: center;
+    margin-block: 0;
+    margin: 4px;
+}
+#reiniciar {
+    margin: 12px;
+}
+#reiniciar button {
+    width: 120px;
+    height: 56px;
+    background-color: green;
     font-family: 'Righteous', cursive;
+    color: aliceblue;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 12px;
+    border-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 1px 4px 8px;
 }
