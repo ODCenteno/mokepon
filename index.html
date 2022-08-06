@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mokepon Battles</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./js/index.js"></script>
 </head>
 <body>
     <section id="seleccionar-mascota">
@@ -15,23 +14,23 @@
         <h2 class="subtitle">Selecciona un animal para jugar</h2>
 
         <div class="contenedor-tarjetas">
+            <input type="radio" name="mascota" id="Hipodoge">
             <label class="tarjeta-de-mokepon" for="Hipodoge">
                 <p>Hipodoge</p>
                 <img src="./assets/mokepons_mokepon_hipodoge_attack.webp" alt="">
             </label>
-            <input type="radio" name="mascota" id="Hipodoge">
 
+            <input type="radio" name="mascota" id="Capipepo">
             <label class="tarjeta-de-mokepon" for="Capipepo">
                 <p>Capipepo</p>
                 <img src="./assets/mokepons_mokepon_capipepo_attack.webp" alt="">
             </label>
-            <input type="radio" name="mascota" id="Capipepo">
 
+            <input type="radio" name="mascota" id="Ratigueya">
             <label class="tarjeta-de-mokepon" for="Ratigueya">
                 <p>Ratigueya</p>
                 <img src="./assets/mokepons_mokepon_ratigueya_attack.webp" alt="">
             </label>
-            <input type="radio" name="mascota" id="Ratigueya">
         </div>
         
         <button id="boton-mascota">Seleccionar</button>
@@ -41,35 +40,41 @@
     <section id="seleccionar-ataque">
         <h1 class="title">Mokepon</h1>
 
-        
-        <h2 class="subtitle">Selecciona tu ataque:</h2>
-        
-        <div class="contenedor-ataques">
-            <button id="boton-agua">Agua 💧</button>
-            <button id="boton-tierra">Tierra 🌱</button>
-            <button id="boton-fuego">Fuego 🔥</button>
+        <div id="seccion-ataques">
+            <h2 class="subtitle">Selecciona tu ataque:</h2>
+            
+            <div class="contenedor-ataques">
+                <button id="boton-agua">Agua 💧</button>
+                <button id="boton-tierra">Tierra 🌱</button>
+                <button id="boton-fuego">Fuego 🔥</button>
+            </div>
+            <section id="mensajes">
+                <p class="instructions-msg">Ataque seleccionado: <span id="ataque-seleccionado">oprime un botón</span></p>
+            </section>
         </div>
-        <section id="mensajes">
-            <p>Ataque seleccionado: <span id="ataque-seleccionado">oprime un botón</span></p>
-        </section>
 
         <div class="contenedor-mensajes">
 
+            <div class="display-attacks">
+                <div class="display-score-message">
+                    <p id="vidas-jugador">3</p>
+                    <p id="mascota-jugador"></p>
+                </div>
+                <div class="display-score-message">
+                    <p id="vidas-enemigo">3</p>
+                    <p id="mascota-enemigo"></p>
+                </div>
+            </div>    
             <p id="resultado-combate"></p>
-
             <section id="reiniciar">
-                <button id="boton-reiniciar">Jugar de nuevo</button>
+                <button class="btn-reiniciar" id="boton-reiniciar">Jugar de nuevo</button>
             </section>
 
             <div class="display-attacks">
                 <div class="display-attacks-message">
-                    <p id="mascota-jugador"></p>
-                    <p id="vidas-jugador">3</p>
                     <p id="ataques-jugador"></p>
                 </div>
                 <div class="display-attacks-message">
-                    <p id="mascota-enemigo"></p>
-                    <p id="vidas-enemigo">3</p>
                     <p id="ataques-enemigo"> </p>
                 </div>
             </div>
@@ -78,6 +83,6 @@
     </section>
 
 
-    
+    <script src="./js/index.js"></script>
 </body>
 </html>

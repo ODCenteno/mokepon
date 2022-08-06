@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
+html {
+    padding: 0%;
+    margin: 0;
+    height: 100vh;
+}
+
+
 body {
     font-family: 'Righteous', cursive;
 }
@@ -21,8 +28,10 @@ body {
 #seleccionar-mascota {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    width: auto;
+    height: 100vh;
 }
 
 .contenedor-tarjetas {
@@ -42,14 +51,21 @@ body {
     align-items: center;
     color: aliceblue;
 }
-
+input {
+    display: none;
+}
+input:hover + label {
+    color: olivedrab;
+    
+}
+input:checked + label {
+    background-color: rgb(186, 217, 186);
+    color: black;
+}
 .tarjeta-de-mokepon img {
     width: 80px;
 }
 
-input {
-    appearance: none;
-}
 
 #boton-mascota {
     margin: 32px;
@@ -61,12 +77,23 @@ input {
     box-sizing: border-box;
     border-radius: 8px;
 }
+#boton-mascota:hover {
+    background-color: olivedrab;
+    box-shadow: 1px 2px;
+}
+#boton-mascota:active {
+    background-color: green;
+}
 
 #seleccionar-ataque {
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    padding: 20px 80px;
+    padding: 20px;
+    height: 100vh;
+}
+.instructions-msg {
+    text-align: center;
 }
 
 .contenedor-ataques {
@@ -74,12 +101,13 @@ input {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+    margin: 0 8px;
 }
 
 .contenedor-ataques button {
     font-family: 'Righteous', cursive;
-    width: 120px;
-    height: 56px;
+    width: 150px;
+    height: 60px;
     background-color: black;
     padding: 10px;
     box-sizing: border-box;
@@ -92,19 +120,19 @@ input {
     box-shadow: 1px 4px 8px;
 }
 
+
 .contenedor-mensajes {
+    padding: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 20px 0px;
     background-color: whitesmoke;
 }
 .contenedor-mensajes > p {
     margin-block: 0;
     padding: 8px;
-    margin-top: 12px;
     font-size: 24px;
 }
 .mensajes {
@@ -115,11 +143,17 @@ input {
     align-items: center;
     background-color: blanchedalmond;
 }
-
+.display-score-message > p {
+    font-size: 26px;
+    text-align: center;
+    color: grey;
+    margin-block: 0;
+} 
 .display-attacks {
     display: flex;
     justify-content: space-between;
     width: 300px;
+    text-align: center;
 }
 .display-attacks-message {
     font-size: 18px;
@@ -129,21 +163,101 @@ input {
     margin-block: 0;
     margin: 4px;
 }
+
+#resultado-combate {
+    margin: 8px;
+    font-size: 30px;
+}
 #reiniciar {
     margin: 12px;
 }
-#reiniciar button {
+.btn-reiniciar:hover {
+    background-color: green;
+    color: aliceblue;
+}
+.btn-reiniciar {
     width: 120px;
     height: 56px;
-    background-color: green;
+    background-color: whitesmoke;
     font-family: 'Righteous', cursive;
-    color: aliceblue;
+    color: black;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 12px;
-    border-color: transparent;
+    border-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 1px 4px 8px;
+    box-shadow: 1px 2px 2px;
+}
+
+@media (max-width: 675px) {
+    html {
+        padding: 0%;
+        margin: 0;
+        height: fit-content;
+    }
+    .title {
+        margin: 0px;
+    }
+    .subtitle {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 18;
+        margin-bottom: 8px;
+    }
+    
+    #boton-mascota {
+        font-size: 28px;
+        text-align: center;
+    }
+    .contenedor-tarjetas {
+        flex-direction: column;
+        align-items: center;
+
+    }
+    
+    .tarjeta-de-mokepon {
+        width: 180px;
+        height: 80px;
+        padding: 4px;
+    }
+    .tarjeta-de-mokepon img {
+        width: 70px;
+    }
+    #boton-mascota {
+        margin: 12px;
+        padding: 0;
+    }
+    #seleccionar-ataque {
+        height: 100vh;
+        padding: 4px 20px;
+    }
+    .display-score-message p {
+        font-size: 28px;
+        text-align: center;
+        color: grey;
+        margin-block: 0;
+    } 
+    .contenedor-ataques {
+        display: flex;
+        flex-direction: column;
+    }
+    .contenedor-ataques button {
+        width: 120px;
+        height: 60px; 
+        margin: 4px;
+    }
+    .contenedor-mensajes {
+        padding: 4px 12px;
+    }
+    #mensajes p {
+        text-align: center;
+    }
+    .contenedor-mensajes > p {
+        margin: 0px;
+        text-align: center;
+        font-size: 22px;
+        
+    }
 }
