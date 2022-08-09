@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-html {
-    padding: 0%;
+* {
+    box-sizing: border-box;
+    padding: 0;
     margin: 0;
-    height: 100vh;
+}
+html {
+    font-size: 62.5%;
 }
 
 
@@ -56,7 +59,7 @@ input {
 }
 input:hover + label {
     color: olivedrab;
-    
+
 }
 input:checked + label {
     background-color: rgb(186, 217, 186);
@@ -67,7 +70,7 @@ input:checked + label {
 }
 
 
-#boton-mascota {
+#btn-seleccionar-mascota {
     margin: 32px;
     width: 200px;
     height: 64px;
@@ -104,9 +107,9 @@ input:checked + label {
     margin: 0 8px;
 }
 
-.contenedor-ataques button {
+.btn-ataque {
     font-family: 'Righteous', cursive;
-    width: 150px;
+    width: 100px;
     height: 60px;
     background-color: black;
     padding: 10px;
@@ -207,9 +210,11 @@ input:checked + label {
         margin-bottom: 8px;
     }
     
-    #boton-mascota {
+    #btn-seleccionar-mascota {
         font-size: 28px;
         text-align: center;
+        margin: 12px;
+        padding: 0;
     }
     .contenedor-tarjetas {
         flex-direction: column;
@@ -224,10 +229,6 @@ input:checked + label {
     }
     .tarjeta-de-mokepon img {
         width: 70px;
-    }
-    #boton-mascota {
-        margin: 12px;
-        padding: 0;
     }
     #seleccionar-ataque {
         height: 100vh;

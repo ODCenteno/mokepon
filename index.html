@@ -13,27 +13,11 @@
 
         <h2 class="subtitle">Selecciona un animal para jugar</h2>
 
-        <div class="contenedor-tarjetas">
-            <input type="radio" name="mascota" id="Hipodoge">
-            <label class="tarjeta-de-mokepon" for="Hipodoge">
-                <p>Hipodoge</p>
-                <img src="./assets/mokepons_mokepon_hipodoge_attack.webp" alt="">
-            </label>
+        <div id="cards-container" class="contenedor-tarjetas">
 
-            <input type="radio" name="mascota" id="Capipepo">
-            <label class="tarjeta-de-mokepon" for="Capipepo">
-                <p>Capipepo</p>
-                <img src="./assets/mokepons_mokepon_capipepo_attack.webp" alt="">
-            </label>
-
-            <input type="radio" name="mascota" id="Ratigueya">
-            <label class="tarjeta-de-mokepon" for="Ratigueya">
-                <p>Ratigueya</p>
-                <img src="./assets/mokepons_mokepon_ratigueya_attack.webp" alt="">
-            </label>
         </div>
         
-        <button id="boton-mascota">Seleccionar</button>
+        <button id="btn-seleccionar-mascota">Jugar</button>
     </section>
 
 
@@ -43,10 +27,7 @@
         <div id="seccion-ataques">
             <h2 class="subtitle">Selecciona tu ataque:</h2>
             
-            <div class="contenedor-ataques">
-                <button id="boton-agua">Agua 💧</button>
-                <button id="boton-tierra">Tierra 🌱</button>
-                <button id="boton-fuego">Fuego 🔥</button>
+            <div id="contenedor-ataques" class="contenedor-ataques">
             </div>
             <section id="mensajes">
                 <p class="instructions-msg">Ataque seleccionado: <span id="ataque-seleccionado">oprime un botón</span></p>
