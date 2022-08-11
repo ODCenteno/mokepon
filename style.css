@@ -165,11 +165,19 @@ input:checked + label {
     text-align: center;
     margin-block: 0;
     margin: 4px;
+    justify-content: space-between;
+}
+
+.resultado-secuencia-combate p {
+    text-align: center;
+    margin-block: 0;
+    margin: 4px;
 }
 
 #resultado-combate {
     margin: 8px;
     font-size: 30px;
+    text-align: center;
 }
 #reiniciar {
     margin: 12px;

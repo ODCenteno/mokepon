@@ -19,19 +19,21 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
 const combatResult = document.getElementById('resultado-combate')
 const ataquesEjecutados = document.getElementById('ataques-jugador')
-const ataquesEnemigo = document.getElementById('ataques-enemigo')
+const mostrarResultadoCombateHTML = document.getElementById('resultado-secuencia-combate')
+const ataquesEnemigoHTML = document.getElementById('ataques-enemigo')
 
 const seccionAtaques = document.getElementById('seccion-ataques')
 
 let mascotas = [];
 let mascotaJugador;
 let ataquesJugador;
-let ataqueEnemigo;
-let triunfosJugador;
-let perdidasJugador;
+let ataqueEnemigo = [];
+let ataquesMokeponEnemigo;
+let triunfosJugador = 0;
+let triunfosEnemigo = 0
 let resultadoCombate;
-let vidasJugador = 3;
-let vidasEnemigo = 3;
+let vidasJugador = 0;
+let vidasEnemigo = 0;
 let botonAgua;
 let botonFuego;
 let botonTierra;
@@ -200,6 +202,8 @@ function secuenciaDeAtaque() {
                 console.log(secuenciaAtaqueJugador)
                 boton.style.backgroundColor = '#112f58'
             } 
+            spanAtaqueSeleccionado.innerHTML = e.target.textContent
+            obtenerAtaqueEnemigo()
         })
     })
 }
@@ -207,19 +211,27 @@ function secuenciaDeAtaque() {
 function seleccionarEnemigo(){
     let enemigoAleatorio = aleatorio(0, mascotas.length -1)
     spanMascotaEnemigo.innerHTML = mascotas[enemigoAleatorio].name
-
+    ataquesMokeponEnemigo = mascotas[enemigoAleatorio].ataques
     secuenciaDeAtaque()
 }
 
 function obtenerAtaqueEnemigo() {
-    let ataqueAleatorio = aleatorio(1,3)
+    let ataqueAleatorio = aleatorio(0, mascotas.length -1)
 
-    if (ataqueAleatorio == 1) {
-        ataqueEnemigo = "Agua"
-    } else if (ataqueAleatorio == 2) {
-        ataqueEnemigo = "Fuego"
-    } else if (ataqueAleatorio == 3) {
-        ataqueEnemigo = "Tierra"
+    if (ataqueAleatorio == 0 || ataqueAleatorio == 1) {
+        ataqueEnemigo.push("💧")
+    } else if (ataqueAleatorio == 3 || ataqueAleatorio == 4) {
+        ataqueEnemigo.push("🔥")
+    } else {
+        ataqueEnemigo.push("🌱")
+    }
+    console.log(ataqueEnemigo)
+    iniciarPelea()
+}
+
+function iniciarPelea() {
+    if (secuenciaAtaqueJugador.length === 5) {
+        combate()
     }
 }
 
@@ -248,47 +260,63 @@ function aleatorio(min, max) {
 //     combate(ataqueJugador, ataqueEnemigo)
 // }
 
-function combate(ataqueJugador, ataqueEnemigo){
+function combate(ataquesJugador, ataquesEnemigo){
     
-    if (ataqueJugador == ataqueEnemigo){
-        resultadoCombate = "¡Empate!"
-    }   else if (ataqueJugador ==  "Agua" && ataqueEnemigo == "Fuego"){
-        vidasEnemigo = vidasEnemigo - 1
-        resultadoCombate = "¡Ganaste esta ronda!"
-    } else if (ataqueJugador == "Tierra" && ataqueEnemigo ==  "Agua"){
-        vidasEnemigo = vidasEnemigo - 1
-        resultadoCombate = "¡Ganaste esta ronda!"
-    } else if (ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
-        vidasEnemigo = vidasEnemigo - 1
-        resultadoCombate = "¡Ganaste esta ronda!"
-    } else {
-        vidasJugador--
-        resultadoCombate = "¡Perdiste esta ronda!"
-    }
-    spanVidasJugador.innerHTML = vidasJugador
-    spanVidasEnemigo.innerHTML = vidasEnemigo
+    for (let index = 0; index < secuenciaAtaqueJugador.length; index++) {
 
-    if (vidasJugador == 0 || vidasEnemigo == 0) {
-        updateLife(vidasJugador, vidasEnemigo)
-    } else {
-        displayAttackMessage(resultadoCombate)
+        if (secuenciaAtaqueJugador[index] === ataqueEnemigo[index]){
+            resultadoCombate = "¡Empate!"
+        }   else if (secuenciaAtaqueJugador[index] ==  "💧" && ataqueEnemigo[index] == "🔥"){
+            triunfosJugador = triunfosJugador + 1
+            resultadoCombate = "¡Ganaste esta ronda!"
+        } else if (secuenciaAtaqueJugador[index] == "🌱" && ataqueEnemigo[index] ==  "💧"){
+            triunfosJugador = triunfosJugador + 1
+            resultadoCombate = "¡Ganaste esta ronda!"
+        } else if (secuenciaAtaqueJugador[index] == "🔥" && ataqueEnemigo[index] == "🌱"){
+            triunfosJugador = triunfosJugador + 1
+            resultadoCombate = "¡Ganaste esta ronda!"
+        } else {
+            ++triunfosEnemigo
+            console.log(triunfosEnemigo)
+            resultadoCombate = "¡Perdiste esta ronda!"
+        }
+        spanVidasJugador.innerHTML = triunfosJugador
+        spanVidasEnemigo.innerHTML = triunfosEnemigo
+
+        displayAttackSecuence(secuenciaAtaqueJugador[index], resultadoCombate, ataqueEnemigo[index])
+        updateLife(triunfosJugador, triunfosEnemigo)
     }
+
+    if (triunfosJugador === triunfosEnemigo) {
+        displayWinnerMessage('¡Ambos Mokepones son fenomenales, Empate!')
+    } else if (triunfosJugador > triunfosEnemigo) {
+        displayWinnerMessage('¡Ganaste el juego!')
+    }   else {
+        displayWinnerMessage('¡Perdiste el juego!')
+    }
+
 }
 
-function displayAttackMessage(resultadoCombate) {
-
+function displayAttackSecuence(ataquesJugador, resultadoCombate, ataqueEnemigo) {
     let nuevoAtaqueJugador = document.createElement('p')
     let nuevoAtaqueEnemigo = document.createElement('p')
+    let mostrarResultadoCombate = document.createElement('p')
+
+    nuevoAtaqueJugador.innerHTML = ataquesJugador
+    mostrarResultadoCombate.innerHTML = resultadoCombate
+    nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo
+
+    ataquesEjecutados.appendChild(nuevoAtaqueJugador)
+    mostrarResultadoCombateHTML.appendChild(mostrarResultadoCombate)
+    ataquesEnemigoHTML.appendChild(nuevoAtaqueEnemigo)
+}
+
+function displayWinnerMessage(resultadoCombate) {
 
     combatResult.innerHTML = resultadoCombate
-    nuevoAtaqueJugador.innerHTML = ataqueJugador
-    nuevoAtaqueEnemigo.innerHTML = ataqueEnemigo
 
     // let crearParrafo = document.createElement('p')
     // crearParrafo.innerHTML = `Elegiste atacar con ${ataqueJugador}. El enemigo atacó con ${ataqueEnemigo}. ${resultadoCombate}`
-
-    ataquesEjecutados.appendChild(nuevoAtaqueJugador)
-    ataquesEnemigo.appendChild(nuevoAtaqueEnemigo)
 }
 
 function displayGameMsg(winner) {
