@@ -10,16 +10,28 @@
 <body>
     <section id="seleccionar-mascota">
         <h1 class="title">Mokepon</h1>
-
         <h2 class="subtitle">Selecciona un animal para jugar</h2>
 
         <div id="cards-container" class="contenedor-tarjetas">
-
         </div>
-        
         <button id="btn-seleccionar-mascota">Jugar</button>
     </section>
-
+    
+    <section id="mapa-juego">
+        <h2 class="subtitle">Recorre el mapa con tu Mokepon</h2>
+        <canvas id="mapa-canvas"></canvas>
+        
+        <div class="btn-move-container">
+            <div class="btn-move-up__container">
+                <button class="btn-move-mokepon" onmousedown="moverMascotaUp()" onmouseup="detenerMovimiento()">Arriba</button>
+            </div>
+            <div class="btn-move-sides__container">
+                <button class="btn-move-mokepon" onmousedown="moverMascotaleft()" onmouseup="detenerMovimiento()">Izquierda</button>
+                <button class="btn-move-mokepon" onmousedown="moverMascotaDown()" onmouseup="detenerMovimiento()">Abajo</button>
+                <button class="btn-move-mokepon" onmousedown="moverMascotaRight()" onmouseup="detenerMovimiento()">Derecha</button>
+            </div>
+        </div>
+    </section>
 
     <section id="seleccionar-ataque">
         <h1 class="title">Mokepon</h1>

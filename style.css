@@ -5,6 +5,7 @@
     padding: 0;
     margin: 0;
 }
+
 html {
     font-size: 62.5%;
 }
@@ -15,14 +16,15 @@ body {
 }
 
 .title {
-    padding: 12px;
-    font-size: 60px;
-    margin: 8px;
+    padding: 1.2rem;
+    font-size: 6rem;
+    margin: 0.8rem;
+    text-align: center;
 }
 
 .subtitle {
-    padding: 8px;
-    font-size: 32px;
+    padding: 0.8rem;
+    font-size: 3.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,20 +41,21 @@ body {
 
 .contenedor-tarjetas {
     display: flex;
-    gap: 10px;
+    gap: 1rem;
 }
 
 .tarjeta-de-mokepon {
-    width: 200px;
-    height: 100px;
+    width: 20rem;
+    height: 10rem;
     background-color: black;
-    padding: 10px;
+    padding: 1rem;
     box-sizing: border-box;
-    border-radius: 6px;
+    border-radius: 0.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
     color: aliceblue;
+    font-size: 2rem;
 }
 input {
     display: none;
@@ -66,19 +69,19 @@ input:checked + label {
     color: black;
 }
 .tarjeta-de-mokepon img {
-    width: 80px;
+    width: 8rem;
 }
 
 
 #btn-seleccionar-mascota {
-    margin: 32px;
-    width: 200px;
-    height: 64px;
+    margin: 3.2rem;
+    width: 20rem;
+    height: 6.4rem;
     background-color: transparent;
     font-family: 'Righteous', cursive;
-    padding: 20px;
+    padding: 1rem;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 0.8rem;
 }
 #boton-mascota:hover {
     background-color: olivedrab;
@@ -88,15 +91,63 @@ input:checked + label {
     background-color: green;
 }
 
+.btn-move-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: auto;
+    width: 60vw;
+    margin: 1.6rem;
+}
+.btn-move-up__container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.btn-move-sides__container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-move-mokepon {
+    font-family: 'Righteous', cursive;
+    font-size: 1.2rem;
+    font-weight: lighter;
+    width: 6.4rem;
+    height: 3.2rem;
+    background-color: black;
+    padding: 0.8rem;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    border-color: transparent;
+    box-shadow: 1px 4px 8px;
+    margin: 0 4px;
+}
+
+
 #seleccionar-ataque {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    padding: 20px;
+    padding: 2rem;
     height: 100vh;
 }
+
+#mapa-juego {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .instructions-msg {
     text-align: center;
+    font-size: 1.6rem;
+    margin: 4px 0;
 }
 
 .contenedor-ataques {
@@ -109,10 +160,10 @@ input:checked + label {
 
 .btn-ataque {
     font-family: 'Righteous', cursive;
-    width: 100px;
-    height: 60px;
+    width: 10rem;
+    height: 6rem;
     background-color: black;
-    padding: 10px;
+    padding: 1rem;
     box-sizing: border-box;
     border-radius: 6px;
     display: flex;
@@ -125,7 +176,7 @@ input:checked + label {
 
 
 .contenedor-mensajes {
-    padding: 8px;
+    padding: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,8 +186,8 @@ input:checked + label {
 }
 .contenedor-mensajes > p {
     margin-block: 0;
-    padding: 8px;
-    font-size: 24px;
+    padding: 0.8rem;
+    font-size: 2.4rem;
 }
 .mensajes {
     width: 100%;
@@ -147,7 +198,7 @@ input:checked + label {
     background-color: blanchedalmond;
 }
 .display-score-message > p {
-    font-size: 26px;
+    font-size: 2.6rem;
     text-align: center;
     color: grey;
     margin-block: 0;
@@ -155,44 +206,44 @@ input:checked + label {
 .display-attacks {
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 30rem;
     text-align: center;
 }
 .display-attacks-message {
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 .display-attacks-message p {
     text-align: center;
     margin-block: 0;
-    margin: 4px;
+    margin: 0.4rem;
     justify-content: space-between;
 }
 
 .resultado-secuencia-combate p {
     text-align: center;
     margin-block: 0;
-    margin: 4px;
+    margin: 0.4rem;
 }
 
 #resultado-combate {
-    margin: 8px;
-    font-size: 30px;
+    margin: 0.8rem;
+    font-size: 3rem;
     text-align: center;
 }
 #reiniciar {
-    margin: 12px;
+    margin: 1.2rem;
 }
 .btn-reiniciar:hover {
     background-color: green;
     color: aliceblue;
 }
 .btn-reiniciar {
-    width: 120px;
-    height: 56px;
+    width: 12rem;
+    height: 5.6rem;
     background-color: whitesmoke;
     font-family: 'Righteous', cursive;
     color: black;
-    padding: 20px;
+    padding: 2rem;
     box-sizing: border-box;
     border-radius: 12px;
     border-color: black;
@@ -214,20 +265,20 @@ input:checked + label {
     .subtitle {
         margin: 0 auto;
         text-align: center;
-        font-size: 18;
-        margin-bottom: 8px;
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
     }
     
     #btn-seleccionar-mascota {
-        font-size: 28px;
+        font-size: 2.8rem;
         text-align: center;
-        margin: 12px;
+        margin: 1.2rem;
         padding: 0;
+        width: 16rem;
     }
     .contenedor-tarjetas {
         flex-direction: column;
         align-items: center;
-
     }
     
     .tarjeta-de-mokepon {
