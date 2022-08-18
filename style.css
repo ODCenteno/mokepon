@@ -253,7 +253,7 @@ input:checked + label {
     box-shadow: 1px 2px 2px;
 }
 
-@media (max-width: 675px) {
+@media (max-width: 800px) {
     html {
         padding: 0%;
         margin: 0;
@@ -285,6 +285,9 @@ input:checked + label {
         width: 180px;
         height: 80px;
         padding: 4px;
+    }
+    .tarjeta-de-mokepon p {
+        font-size: 1.4rem;
     }
     .tarjeta-de-mokepon img {
         width: 70px;
