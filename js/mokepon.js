@@ -322,11 +322,28 @@ function pintarCanvas() {
     )
 
     mascotaJugador.pintarMokepon()
+
+    enviarPosicion(mascotaJugador.x, mascotaJugador.y)
+
     nuevoEnemigo.pintarMokepon()
     if ( mascotaJugador.speedX !== 0 || mascotaJugador.speedY !== 0) {
         checkForColision(nuevoEnemigo)
     }
 }
+
+function enviarPosicion(coordenadax, coordenaday) {
+    fetch(`http://127.0.0.1:8080/mokepon/${jugadorId}/posicion`, {
+        method: "post",
+        header: {
+            "Content-type": "application/jason"
+        },
+        body: JSON.stringify({
+            x: coordenadax,
+            y: coordenaday,
+        })
+    })
+}
+
 
 function moverMascotaRight() {
     mascotaJugador.speedX = 5
