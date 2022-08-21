@@ -28,6 +28,7 @@ const ataquesEnemigoHTML = document.getElementById('ataques-enemigo')
 const seccionAtaques = document.getElementById('seccion-ataques')
 
 let jugadorId = null;
+let enemigoId = null;
 let mascotas = [];
 let mascotaJugador;
 let nombreMascotaSeleccionada;
@@ -97,7 +98,7 @@ class Mokepon {
             this.x,
             this.y,
             this.width,
-            this.height
+            this.height,
         )
     }
 }
@@ -298,6 +299,10 @@ function pintarCanvas() {
 
     enviarPosicion(mascotaJugador.x, mascotaJugador.y)
 
+    mokeponesSalvajes.forEach(function (mokepon) {
+        mokepon.pintarMokepon()
+        checkForColision(mokepon)
+    })
     // nuevoEnemigo.pintarMokepon()
 }
 
@@ -316,11 +321,14 @@ function enviarPosicion(x, y) {
         res.ok ? res.json()
             .then(function ({ enemigos }) {
                 console.log(enemigos);
-                enemigos.forEach(function (enemigo) {
+
+                mokeponesSalvajes = enemigos.map(function (enemigo) {
                     console.log("Estos son los datos del enemigo")
                     console.log(enemigo)
+
                     let enemigoRemoto = null;
                     const nombreMascotaEnemigo = enemigo.mokepon.name || "" ;
+
                     if (nombreMascotaEnemigo === "Hipodoge") {
                         enemigoRemoto = new Mokepon(
                             "Hipodoge",
@@ -351,10 +359,7 @@ function enviarPosicion(x, y) {
                     enemigoRemoto.x = enemigo.x
                     enemigoRemoto.y = enemigo.y
 
-                    enemigoRemoto.pintarMokepon()
-                    if ( mascotaJugador.speedX !== 0 || mascotaJugador.speedY !== 0) {
-                        checkForColision(enemigoRemoto)
-                    }
+                    return enemigoRemoto;
                 })
             }): "No se recibieron enemigos desde el servidor";
         })
@@ -450,28 +455,56 @@ function secuenciaDeAtaque() {
             } 
             spanAtaqueSeleccionado.innerHTML = e.target.textContent
 
-            iniciarPelea()
+            if (secuenciaAtaqueJugador.length === 5) {
+                enviarAtaques();
+            } 
+        })
+    })  
+}
+
+function enviarAtaques() {
+    fetch(`http://127.0.0.1:8080/mokepon/${jugadorId}/ataques`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            ataques: secuenciaAtaqueJugador
         })
     })
-    
+
+    intervalo = setInterval(obtenerAtaques, 50)
 }
 
-
-function seleccionarEnemigo(){
-    let enemigoAleatorio = aleatorio(0, mascotas.length -1)
-
-    nuevoEnemigo = mokeponesSalvajes[enemigoAleatorio]
-    console.log(`El enemigo a vencer es ${nuevoEnemigo.name}`)
-
-    nuevoEnemigo.x = aleatorio(40, mapaCanvas.width - nuevoEnemigo.width)
-    nuevoEnemigo.y = aleatorio(60, mapaCanvas.height - nuevoEnemigo.height)
-
-    spanMascotaEnemigo.innerHTML = nuevoEnemigo.name
-    ataquesMokeponEnemigo = nuevoEnemigo.ataques
-    
-    // secuenciaDeAtaqueEnemigo(ataquesMokeponEnemigo)
-    // console.log(arregloAtaqueEnemigo)
+function obtenerAtaques() {
+    fetch(`http://127.0.0.1:8080/mokepon/${enemigoId}/ataques`)
+        .then(function(res) {
+            res.ok ? 
+                res.json()
+                    .then(function({ ataques }) {
+                        if (ataques.length === 5) {
+                            arregloAtaqueEnemigo = ataques
+                            iniciarPelea()
+                        }
+                    }) : console.log("No se ha recibido la lista completa de ataques del enemigo");
+        })
 }
+
+// function seleccionarEnemigo(){
+//     let enemigoAleatorio = aleatorio(0, mascotas.length -1)
+
+//     nuevoEnemigo = mokeponesSalvajes[enemigoAleatorio]
+//     console.log(`El enemigo a vencer es ${nuevoEnemigo.name}`)
+
+//     nuevoEnemigo.x = aleatorio(40, mapaCanvas.width - nuevoEnemigo.width)
+//     nuevoEnemigo.y = aleatorio(60, mapaCanvas.height - nuevoEnemigo.height)
+
+//     spanMascotaEnemigo.innerHTML = nuevoEnemigo.name
+//     ataquesMokeponEnemigo = nuevoEnemigo.ataques
+    
+//     secuenciaDeAtaqueEnemigo(ataquesMokeponEnemigo)
+//     console.log(arregloAtaqueEnemigo)
+// }
 
 // function secuenciaDeAtaqueEnemigo(ataquesMokeponEnemigo) {
 
@@ -485,14 +518,16 @@ function seleccionarEnemigo(){
 //     })
 // }
 
+function aleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 function iniciarPelea() {
+    clearInterval(intervalo)
+    
     if (secuenciaAtaqueJugador.length === 5) {
         combate()
     }
-}
-
-function aleatorio(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 function combate(){
@@ -574,9 +609,11 @@ function checkForColision(nuevoEnemigo) {
 
     detenerMovimiento()
     clearInterval(intervalo)
+    spanMascotaEnemigo.innerHTML = nuevoEnemigo.name
     seccionSeleccionarAtaque.style.display = 'flex'
     mapaSection.style.display = 'none'
     console.log(`Hay una colisión con ${nuevoEnemigo.name}`)
+    enemigoId = nuevoEnemigo.id
 }
 
 function reiniciarJuego() {
