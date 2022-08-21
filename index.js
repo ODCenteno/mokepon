@@ -17,14 +17,14 @@ class Jugador {
     }
 
     actualizarPosicion(x, y) {
-        this.x = x
-        this.y = y
+        this.x = x;
+        this.y = y;
     }
 }
 
 class Mokepon {
-    constructor(nombre) {
-        this.nombre = nombre
+    constructor(name) {
+        this.name = name
     }
 }
 
@@ -41,10 +41,13 @@ app.get("/unirse", (req, res) => {
 
 app.post("/mokepon/:jugadorId", (req, res) => {
     const jugadorId = req.params.jugadorId || ""
-    const mokeponName = req.body.mokepon || ""
+    const mokeponName = req.body.mokepon.name || ""
+    console.log(`El nombre del mokepon recibido en el servidor es ${mokeponName}`)
+    
     const mokepon = new Mokepon(mokeponName)
 
     const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+    
     if (jugadorIndex >= 0) {
         jugadores[jugadorIndex].asignarMokepon(mokepon)
     }
@@ -55,15 +58,19 @@ app.post("/mokepon/:jugadorId", (req, res) => {
 })
 
 app.post("/mokepon/:jugadorId/posicion", (req, res) => {
+    console.log(req.body)
     const jugadorId = req.params.jugadorId || ""
-    const x = req.body.x || 0
-    const y = req.body.y || 0
+    const x = req.body.x || 20
+    const y = req.body.y || 20
 
+    
     const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+    
     if (jugadorIndex >= 0) {
         jugadores[jugadorIndex].actualizarPosicion(x, y)
     }
-
+    
+    // console.log(`Las coordenadas del mokepon son en X:${x} en Y: ${y}`)
     const enemigos = jugadores.filter((jugador) =>  jugadorId !== jugador.id);
 
     res.send({ enemigos })
