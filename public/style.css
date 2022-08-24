@@ -82,13 +82,16 @@ input:checked + label {
     padding: 1rem;
     box-sizing: border-box;
     border-radius: 0.8rem;
+    user-select: none;
 }
 #boton-mascota:hover {
     background-color: olivedrab;
     box-shadow: 1px 2px;
+    user-select: none;
 }
 #boton-mascota:active {
     background-color: green;
+    user-select: none;
 }
 
 .btn-move-container {
@@ -98,16 +101,19 @@ input:checked + label {
     height: auto;
     width: 60vw;
     margin: 1.6rem;
+    user-select: none;
 }
 .btn-move-up__container {
     display: flex;
     justify-content: center;
     margin-bottom: 4px;
+    user-select: none;
 }
 
 .btn-move-sides__container {
     display: flex;
     justify-content: space-evenly;
+    user-select: none;
 }
 
 .btn-move-mokepon {
@@ -127,6 +133,7 @@ input:checked + label {
     border-color: transparent;
     box-shadow: 1px 4px 8px;
     margin: 0 4px;
+    user-select: none;
 }
 
 
@@ -136,6 +143,7 @@ input:checked + label {
     align-items: center;
     padding: 2rem;
     height: 100vh;
+    user-select: none;
 }
 
 #mapa-juego {
@@ -172,6 +180,7 @@ input:checked + label {
     color: aliceblue;
     border-color: transparent;
     box-shadow: 1px 4px 8px;
+    user-select: none;
 }
 
 
@@ -236,6 +245,7 @@ input:checked + label {
 .btn-reiniciar:hover {
     background-color: green;
     color: aliceblue;
+    user-select: none;
 }
 .btn-reiniciar {
     width: 12rem;
@@ -251,6 +261,7 @@ input:checked + label {
     align-items: center;
     justify-content: center;
     box-shadow: 1px 2px 2px;
+    user-select: none;
 }
 
 @media (max-width: 800px) {

@@ -23,12 +23,27 @@
         
         <div class="btn-move-container">
             <div class="btn-move-up__container">
-                <button class="btn-move-mokepon" onmousedown="moverMascotaUp()" onmouseup="detenerMovimiento()">Arriba</button>
+                <button class="btn-move-mokepon" 
+                ontouchstart="moverMascotaUp()" 
+                onmousedown="moverMascotaUp()" 
+                onmouseup="detenerMovimiento()"
+                ontouchend="detenerMovimiento()">Arriba</button>
             </div>
             <div class="btn-move-sides__container">
-                <button class="btn-move-mokepon" onmousedown="moverMascotaleft()" onmouseup="detenerMovimiento()">Izquierda</button>
-                <button class="btn-move-mokepon" onmousedown="moverMascotaDown()" onmouseup="detenerMovimiento()">Abajo</button>
-                <button class="btn-move-mokepon" onmousedown="moverMascotaRight()" onmouseup="detenerMovimiento()">Derecha</button>
+                <button class="btn-move-mokepon"
+                ontouchstart="moverMascotaleft()" 
+                onmousedown="moverMascotaleft()" 
+                onmouseup="detenerMovimiento()"
+                ontouchend="detenerMovimiento()">Izquierda</button>
+                <button class="btn-move-mokepon" 
+                ontouchstart="moverMascotaDown()" 
+                onmousedown="moverMascotaDown()" 
+                onmouseup="detenerMovimiento()"
+                ontouchend="detenerMovimiento()">Abajo</button>
+                <button class="btn-move-mokepon"
+                ontouchstart="moverMascotaRight()" onmousedown="moverMascotaRight()" 
+                onmouseup="detenerMovimiento()"
+                ontouchend="detenerMovimiento()">Derecha</button>
             </div>
         </div>
     </section>
@@ -79,6 +94,6 @@
     </section>
 
 
-    <script src="./js/mokepon.js"></script>
+    <script src="./mokepon.js"></script>
 </body>
 </html>
